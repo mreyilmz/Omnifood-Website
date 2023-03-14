@@ -1,0 +1,695 @@
+/*********************************************/
+/* HEADER */
+/*********************************************/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fdf2e9;
+
+  /* Because we want header to be sticky later */
+  height: 9.6rem;
+  padding: 0 4.8rem;
+  position: relative;
+}
+
+.logo {
+  height: 2.2rem;
+}
+
+/*********************************************/
+/* NAVIGATION */
+/*********************************************/
+.main-nav-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4.8rem;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited {
+  display: inline-block;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1.8rem;
+  transition: all 0.3s;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active {
+  color: #cf711f;
+}
+
+/* Specifity'ti artırmak için yani bu seçimin .main-nav-link'ten daha öncelikli olması için bu şekilde yazdık. Hem .main-nav-link class'ına hem de .nav-cta class'ına sahip olan elementi seçtik. Specifity artırma sebebimiz bu css ko parçasının uygulanacak olmasından emin olmak */
+.main-nav-link.nav-cta:link,
+.main-nav-link.nav-cta:visited {
+  padding: 1.2rem 2.4rem;
+  border-radius: 9px;
+  color: #fff;
+  background-color: #e67e22;
+}
+
+.main-nav-link.nav-cta:hover,
+.main-nav-link.nav-cta:active {
+  background-color: #cf711f;
+}
+
+/* MOBILE NAVIGATION */
+
+.btn-mobile-nav {
+  border: none;
+  /* Butondaki background'u kaldırdık */
+  background: none;
+  cursor: pointer;
+  /* Ekran genişliği yüksekken menu butonunun gözükmesini istemediğimiz için default olarak kaldırdık. Mobile genişliğe geçince görünür yapıcaz */
+  display: none;
+}
+
+.icon-mobile-nav {
+  height: 4.8rem;
+  width: 4.8rem;
+  color: #333;
+}
+
+/* Attribute selector ile de seçim yapabiliyoruz. */
+.icon-mobile-nav[name="close-outline"] {
+  display: none;
+}
+
+/* STICKY NAVIGATION */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 8rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: rgba(255, 255, 255, 0.97);
+  /* Menü butonunun her zaman üstte olmasını istediğimiz için buna 999 verdik menü 9999'du */
+  z-index: 999;
+  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
+}
+
+.active .section-hero {
+  /* Nav'ın orjinal uzunluğu kadar margin ekledik */
+  margin-top: 9.6rem;
+}
+
+/*********************************************/
+/* HERO SECTION */
+/*********************************************/
+.section-hero {
+  background-color: #fdf2e9; /* Asıl rengimiz olan - Primary: #e67e22 rengimizin maketintsandshades.com sitesinden tonlarını bulduk. Start-up şirketi için site hazırladığımız için açık bir tonunu seçtik. */
+  padding: 4.8rem 0 9.6rem 0;
+}
+
+.hero {
+  max-width: 130rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+  display: grid;
+  gap: 9.6rem;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.hero-description {
+  line-height: 1.6;
+  font-size: 2rem;
+  margin-bottom: 4.8rem;
+}
+
+.hero-img {
+  width: 100%;
+}
+
+.delivered-meals {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: 8rem;
+}
+
+.delivered-imgs {
+  display: flex;
+}
+
+.delivered-imgs img {
+  height: 4.8rem;
+  width: 4.8rem;
+  border-radius: 50%;
+  margin-right: -1.6rem; /* eksi margin vererek img'ların üst üste gelmesini sağladık */
+  border: 3px solid #fdf2e9;
+}
+
+.delivered-imgs img:last-child {
+  margin: 0;
+}
+
+.delivered-text {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.delivered-text span {
+  color: #cf711f; /* Bu rengin açık ton olanını yanı orjinal rengimizi seçmiştik. Fakat sitenin w3c standartlarına uyması için contrast checker adında bir tool kullandık. Sitenin adı coolors.co. Tool contrastın zayıf olduğunu belirtti, biz de bi ton koyu olanını seçtik sonuç yine pek iyi değildi fakat büyük metinler için uygun olduğunu belirtti. */
+  font-weight: 700;
+}
+/*********************************************/
+/* FEATURED-IN SECTION */
+/*********************************************/
+.section-featured {
+  padding: 4.8rem 0 3.2rem 0;
+}
+
+.heading-featured-in {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+  font-weight: 500;
+  color: #888;
+  text-align: center;
+  margin-bottom: 2.4rem;
+}
+
+.logos {
+  display: flex;
+  justify-content: space-around;
+}
+
+.logos img {
+  height: 3.2rem;
+  /* Filter önemli bir property */
+  /* Firma img.ları çok dikkat çektiği için renklerini kaldırdık */
+  filter: brightness(0);
+  opacity: 50%;
+}
+/*********************************************/
+/* HOW IT WORKS SECTION */
+/*********************************************/
+
+.section-how {
+  padding: 9.6rem 0;
+}
+
+.step-number {
+  font-size: 8.6rem;
+  font-weight: 600;
+  color: #ccc;
+}
+
+.step-description {
+  font-size: 1.8rem;
+  line-height: 1.8;
+}
+
+.step-img-box {
+  /* Tel'in arkasına ::before ile bir alan yerleştirdik. Bu alanı absoulute ypamamız gerektiği için parenti olan div'i yani bu class'a sahip olan elementi relative yaptık */
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-img-box::after,
+.step-img-box::before {
+  content: "";
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  /* Pseudo-elements in flex containers will also be flex items, bu yüzden aşağıdaki 3 satır kod parçacığı olmadan da circle'lar telefonun olduğu yerde olacaktı. */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.step-img-box::before {
+  width: 60%;
+  /* height: 60%; */
+  /* 60% of parent's width */
+  padding-bottom: 60%;
+  background-color: #fdf2e9;
+  z-index: -2;
+}
+
+.step-img-box::after {
+  width: 45%;
+  padding-bottom: 50%;
+  background-color: #fae5d3;
+  z-index: -1;
+}
+
+/* img.lar otomatik olarak scale olmadıkları için yüzde vermemiz gerekiyor. Bu şekilde parent elementin %50'sini kaplayacak  */
+/* img.larda ::before ve ::after çalışmıyor bu yüzden img.nin parenti olan elementte uyguladık. */
+.step-img {
+  width: 35%;
+}
+
+/*********************************************/
+/* MEALS SECTION */
+/*********************************************/
+.section-meals {
+  padding: 9.6rem 0;
+}
+
+.meal {
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.2);
+  border-radius: 11px;
+  /* Kartın köşelerini round yapmamıza rağmen görsel üzerine geldiği için köşeliymiş gibi gözüktü. Bu yüzden görselin karttan taşan kısımları overflow: hidden ile gizledik. */
+  overflow: hidden;
+  transition: all 0.4s;
+}
+
+.meal:hover {
+  /* Kartların üzerine geldiğimizde hafif yukarı kayacaklar ve shadow'un ışık değeri biraz daha azalacak sanki havaya kalmkıyormuş gibi olacak. */
+  transform: translateY(-1.2rem);
+  box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.1);
+}
+
+.meal-content {
+  padding: 3.6rem 4.8rem 4.8rem 4.8rem;
+}
+
+.meal-tags {
+  margin-bottom: 1.2rem;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #333;
+  border-radius: 100px;
+  font-weight: bold;
+}
+
+.tag--vegetarian {
+  background-color: #94d82d;
+}
+
+.tag--vegan {
+  background-color: #51cf66;
+}
+
+.tag--paleo {
+  background-color: #ffd43b;
+}
+
+.meal-title {
+  font-size: 2rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 3.2rem;
+}
+
+.meal-attributes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.meal-attribute {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.meal-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+  color: #e67e22;
+}
+
+.meal-img {
+  width: 100%;
+}
+
+.all-recipes {
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.recipes-link {
+  margin-bottom: 7.4rem;
+}
+
+/*********************************************/
+/* TESTIMONIALS SECTION */
+/*********************************************/
+
+.section-testimonials {
+  display: grid;
+  /* Buy şekilde de fr'lar arasında fark oluşturabiliriz. */
+  grid-template-columns: 5.5fr 4.5fr;
+  align-items: center;
+
+  background-color: #fdf2e9;
+}
+
+/* önceden grid ve gird--2-cols tamımlamıştık fakat o gridler sayfa genişliğinde olan containerlar içindi. testimonials ve gallery containerları sayfanın yarısını kaplıyor bu yüzden yeni grid tanımlıcaz */
+
+.testimonials-container {
+  padding: 9.6rem;
+}
+
+.testimonials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.8rem;
+  column-gap: 8re;
+}
+
+.testimonial-img {
+  width: 6.4rem;
+  border-radius: 50%;
+  margin-bottom: 1.2rem;
+}
+
+.testimonial-text {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  margin-bottom: 1.6rem;
+}
+
+.testimonial-name {
+  font-size: 1.6rem;
+  color: #6f6f6f;
+}
+
+.gallery {
+  display: grid;
+  gap: 1.6rem;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 1.6rem;
+}
+
+/* Kullanıcı görselin üstüne geldiğinde container'dan taşan kısımları gizlemek için overflow: hidden kullandık */
+.gallery-item {
+  overflow: hidden;
+}
+
+/* Img.lar inline element oldukları bottomda küçük bir margin oluyor bu yüzden o marginin kalkması için block yaptık*/
+.gallery-item img {
+  display: block;
+  width: 100%;
+  transition: all 0.4s;
+}
+.gallery-item img:hover {
+  transform: scale(1.1);
+}
+
+/*********************************************/
+/* PRICING SECTION */
+/*********************************************/
+.section-pricing {
+  padding: 9.6rem 0 9.6rem 0;
+}
+
+.pricing-plan {
+  border-radius: 11px;
+  padding: 4.8rem;
+  width: 75%;
+}
+
+.pricing-plan--starter {
+  justify-self: end;
+  box-shadow: inset 0 0 0 2px #fdf2e9;
+}
+
+.pricing-plan--complete {
+  background-color: #fdf2e9;
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-plan--complete::after {
+  content: "Best value";
+  position: absolute;
+  top: 5%;
+  right: -20.8%;
+
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+  background-color: #ffd43b;
+  padding: 0.8rem 8rem;
+
+  transform: rotate(45deg);
+}
+
+.plan-header {
+  text-align: center;
+  margin-bottom: 4.8rem;
+}
+.plan-name {
+  color: #cf711f;
+  font-weight: 600;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.75;
+  margin-bottom: 3.2rem;
+}
+.plan-price {
+  font-size: 6.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.6rem;
+}
+
+.plan-price span {
+  font-size: 3rem;
+  font-weight: 500;
+  margin-right: 0.8rem;
+}
+.plan-text {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #6f6f6f;
+}
+
+.plan-sign-up {
+  text-align: center;
+  margin-top: 4.8rem;
+}
+
+.plan-details {
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  text-align: center;
+}
+
+.feature-icon {
+  color: #e67e22;
+  height: 3.2rem;
+  width: 3.2rem;
+  background-color: #fdf2e9;
+  margin-bottom: 3.2rem;
+  padding: 1.6rem;
+  border-radius: 50%;
+}
+.feature-title {
+  font-size: 2.4rem;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 1.6rem;
+}
+
+.feature-text {
+  font-size: 1.8rem;
+  line-height: 1.8;
+}
+
+/*********************************************/
+/* CTA SECTION */
+/*********************************************/
+
+.section-cta {
+  padding: 4.8rem 0 12.8rem 0;
+}
+
+.cta {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  overflow: hidden;
+  /* background-color: #e67e22; */
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.2);
+  border-radius: 11px;
+
+  /* Yukarıdan aşağıya */
+  /*   background-image: linear-gradient(red, #e67e22); */
+
+  /* Soldan sağa */
+  /*   background-image: linear-gradient(90deg, red, #e67e22); */
+
+  /* Soldan sağa */
+  /*   background-image: linear-gradient(to right, red, #e67e22); */
+
+  /* Sola */
+  /*   background-image: linear-gradient(to left, red, #e67e22); */
+
+  /* Sağ alt köşeye */
+  background-image: linear-gradient(to right bottom, #eb984e, #e67e22);
+
+  /* temp height */
+  /* height: 50rem; */
+}
+
+.cta-text-box {
+  padding: 4.8rem 6.4rem 6.4rem 6.4rem;
+  color: #45260a;
+}
+
+.cta .heading-secondary {
+  /* color: #45260a; */
+  /* color property normal inherit edilemiyor fakat aşağıdaki rule ile parent elementinden color inherit etmesini sağladık. Parent elementi .cta-text-box */
+  color: inherit;
+  margin-bottom: 3.2rem;
+}
+
+.cta-text {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  margin-bottom: 4.8rem;
+}
+
+/* css klasörü içinde olduğumuz için css klasöründen bir klasör geriye gidip section klasörüne ulaştık ordan img klasörünü seçip devam ettik. */
+.cta-img-box {
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(235, 151, 78, 0.349),
+      rgba(230, 125, 34, 0.349)
+    ),
+    url("../img/eating.jpg");
+  /* arka plan görseli kutuyu kaplar. Kaplayacamayacak kadar büyükse en büyük heline gelir */
+  background-size: cover;
+  background-position: center;
+}
+
+.cta-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3.2rem;
+  row-gap: 2.4rem;
+}
+
+.cta-form label {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+.cta-form input,
+.cta-form select {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1.8rem;
+  /* input içindeki placeholder, butondaki yazı ve optionlardaki yazılar body'den inherit etmedikleri için aşağıdaki kodla inherit etmelerini sağladık */
+  font-family: inherit;
+  color: inherit;
+  border: none;
+  background-color: #fdf2e9;
+  border-radius: 9px;
+
+  box-shadow: 0 4px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Placeholder seçmek için bu yöntem kullanılıyor */
+.cta-form input::placeholder {
+  color: #aaa;
+}
+
+/* .cta içindeki inputların, selectin ve butonun focusunu güzelleştirdik */
+.cta *:focus {
+  outline: none;
+  /* outline: 4px dotted #e67e22; */
+  /* outline-offset: 8px; */
+  box-shadow: 0 0 0 0.8rem rgba(253, 242, 233, 0.5);
+}
+
+/*********************************************/
+/* FOOTER */
+/*********************************************/
+
+.footer {
+  padding: 12.8rem 0;
+  border-top: 1px solid #eee;
+}
+
+.grid--footer {
+  grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+}
+
+.logo-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo {
+  /* To add some vertical spacing, wee needed to make this a block level element. Because a link is just an inline element so it needs to be block if we want to use the complete box model on it. Box model include margin property. */
+  display: block;
+  margin-bottom: 3.2rem;
+}
+
+.social-links {
+  list-style: none;
+  display: flex;
+  gap: 2.4rem;
+}
+
+.social-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+}
+.copyright {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  color: #767676;
+  /* Parent element olan .logo-col'u flex ve flex-direction: column yaptık. Copyright yazısına da margin-top: auto vererek direk sütunun bottom'ında kalmasını sağladık. */
+  margin-top: auto;
+}
+
+.contacts {
+  font-style: normal;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.address {
+  margin-bottom: 2.4rem;
+}
+
+.footer-heading {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 4rem;
+}
+
+.footer-navigation {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.footer-link:link,
+.footer-link:visited {
+  text-decoration: none;
+  font-size: 1.6rem;
+  color: #767676;
+  transition: all 0.3s;
+}
+
+.footer-link:hover,
+.footer-link:active {
+  color: #333;
+}

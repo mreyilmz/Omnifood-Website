@@ -1,0 +1,307 @@
+/* 
+
+----- 01 TYPOGRPAHY SYSTEM
+
+- font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- font weights:
+Default: 400
+Medium: 500
+Semi-bold: 600
+Bold: 700
+
+
+- line-heights:
+Deafult: 1
+Small: 1.05
+Medium: 1.2
+Paragraph default: 1.6
+Large: 1.8
+
+- letter spacing:
+-0.5px
+0.75px
+
+
+----- 02 COLORS
+
+- Primary: #e67e22
+- Tints: 
+#fdf2e9
+#fae5d3
+#eb984e
+- Shades: 
+#cf711f
+#45260a
+- Accents:
+- Greys:
+#767676 (Lightest grey allowed on white)
+#888
+#555
+#333
+#6f6f6f (lightest grey allowed on #fdf2e9)
+
+----- Görseller için hoca 'unsplash.com' adında bir siteden yemek restaurant manzara wallpaper architecture gibi birçok görseli almış
+----- insan avatar fotoları için hoca 'uifaces.co' adında bir siteyi kullanmış.
+
+
+
+----- 05 SHADOWS
+0 2.4rem 4.8rem rgba(0, 0, 0, 0.2);
+0 3.2rem 6.4rem rgba(0, 0, 0, 0.1);
+inset 0 0 0 2px #fdf2e9;
+
+
+Not: Borderda piksel kullanıyoruz
+----- 06 BORDER RADIUS
+Default: 9px
+medium: 11px
+
+----- 07 WHITESPACE
+
+- SPACING SYSTEM (px)
+2 / 4 / 6 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+
+*/
+
+/* Her Projenin kod aşamasında global reseti yapmamız gerekiyor */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* font-size: 10px;  */
+  /* Default olarak html'de font-size 16 pixel'e eşittir. Fakat html'de font'size'ı 10'a eşitlersek 1 rem = 10px olmuş olur Bu da hesaplarımızı kolaylaştırır.
+  Ama bu çözümde de farklı bir sorun ortaya çıkıyor. Eğer kullanıcı görmekte zorlanan biriyse font'un büyüklüğünü artırmak isteyecektir. Lakin font-size = 10px koduyla kkulanıcı ne isterse istesin fontun sabit kalmasına neden oluyoruz.*/
+
+  /* 10px / 16px = 62.5% */
+  /* Percentage of user's browser font-size setting */
+  font-size: 62.5%; /* Bu şekilde kullanıcı font-size'ı ne seçerse seçsin onun 62.5% sini almış oluyoruz ve kullanıcı da font-size'ı sorunsuz bir şekilde büyütmüş olur. */
+
+  /* Ekranı yana kaydırmayı engelliyor */
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  transition: all 0.3s;
+}
+
+/* Body'de initial olarak font-family, line-height, font-weight ve color'ı belirledik. Child elementler body'den kodları inherit edecekler */
+body {
+  font-family: "Rubik", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+
+  /* Ekranı yana kaydırmayı engelliyor */
+  overflow-x: hidden;
+}
+
+/*********************************************/
+/* GENERAL REUSABLE COMPONENTS */
+/*********************************************/
+.container {
+  /* Webde genelde sayfalar 1200px veya 1140px width kullanır */
+  max-width: 120rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  column-gap: 6.4rem;
+  row-gap: 9.6rem;
+}
+
+/* 
+.grid:last-child{
+  margin-bottom: 0;
+}   
+*/
+
+/* grid class'ına sahip ve last child olmayan elementlere 9.6rem margin uyguladık. Eğer parent'ta sadece bir child varsa oda grid class'ına sahipse last-child olur. */
+.grid:not(:last-child) {
+  margin-bottom: 9.6rem;
+}
+
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Kullanmadık */
+/* .grid--5-cols {
+  grid-template-columns: repeat(5, 1fr);
+} */
+
+.grid--center-v {
+  align-items: center;
+}
+
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
+  line-height: 1.05;
+  color: #333;
+  letter-spacing: -0.5px;
+}
+
+.heading-primary {
+  font-size: 5.2rem;
+  font-weight: 700;
+  margin-bottom: 3.2rem;
+}
+
+.heading-secondary {
+  font-size: 4.4rem;
+  line-height: 1.2;
+  margin-bottom: 9.6rem;
+}
+
+.heading-tertiary {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 3.2rem;
+}
+
+.subheading {
+  /* span Non-Semantic bir element */
+  /* span inline element olduğu için block'a çevirdik*/
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #cf711f;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.75px;
+}
+
+/* linklerde link ve visited'a genellikle aynı property'ler eklenir. */
+
+/* CTA Section'ındaki butona da aşağıdaki property.leri vermek için .btn class'ını da ekledik. Çünkü .btn:link ve .btn:visited sadece anchorları etkiliyor. */
+.btn,
+.btn:link,
+.btn:visited {
+  display: inline-block;
+  text-decoration: none;
+
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1.6rem 3.2rem; /* Genelde linkler ve butonlar için sağdan ve soldan verilen boşluk üstten ve alttan verilenin iki katıdır. Burda da bunu yaptık. */
+  border-radius: 9px;
+
+  /* Only necessary for .btn itself */
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+
+  /* transition her zaman original state'e girilmelidir. hover ve active durumlarında sadece bgcolor'ı değiştiridiğimiz için sadece onu background-color yazdık. Fakat butonumuzun tüm property'lerinin değiştiğinde transition uygulanması için "all kullanabilirdik"  */
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn--full:link,
+.btn--full:visited {
+  background-color: #e67e22;
+  color: #fff;
+}
+
+/* linklerde hover ve active'e genellikle aynı property'ler eklenir. */
+.btn--full:hover,
+.btn--full:active {
+  background-color: #cf711f;
+}
+
+.btn--outline:link,
+.btn--outline:visited {
+  background-color: #fff;
+  color: #555;
+}
+
+.btn--outline:hover,
+.btn--outline:active {
+  background-color: #fdf2e9;
+  /* İkinci buton daha önemsiz old. için ona markanın rengini arka plan olarak vermedik. Fakat section'ın arka plan renginden de ayırmak için border vermek istedik fakat border verince butonun boyutu büyüdü çünkü (sanırım) box-sizing: border-box kullandığımız için. Bu yüzden biz de butonun içinden kenarlık verdik. */
+  /* border: 3px solid #fff; */
+  /* Trick to add border inside */
+  /* yön vermedik blur vermedik inset, kalınlık ve renk ile içten kenarlık verdik */
+  box-shadow: inset 0 0 0 3px #fff;
+}
+
+.btn--form {
+  background-color: #45260a;
+  color: #fdf2e9;
+  align-self: end;
+  padding: 0.8rem;
+}
+
+.btn--form:hover {
+  background-color: #fff;
+  color: #555;
+}
+
+.link:link,
+.link:visited {
+  display: inline-block;
+  color: #e67e22;
+  text-decoration: none;
+  /* currentColor; textte hangi color kullanılıyorsa ona eşittir. */
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: all 0.3s;
+}
+
+.link:hover,
+.link:active {
+  color: #cf711f;
+  /* border-bottom'ı kaldırdığımız zaman 1px.lik kayma bile sayfada farkediliyor bu yüzden tranparent yaparak bir nevi görünmez yaptık */
+  border-bottom: 1px solid transparent;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.list-item {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+
+  line-height: 1.2;
+}
+
+.list-icon {
+  width: 3rem;
+  height: 3rem;
+  color: #e67e22;
+}
+
+/* HELPER/SETTINGS CLASSES */
+
+/* Butonlar arasına boşluk vermek için normalde butonu seçip sağdan margin verebilirdik. Fakat butonların yerini değiştirmek istediğimizde veya başka bir özellik eklemek istediğimizde bu durum bizi biraz zora sokabilirdi. Bu yüzden butona yeni bir class vererek o classa margin verdik. Bu şekilde daha güvenli ve ilerde sorun çıkamrayacak bir yöntemle ilerlemiş oluyoruz. Bu özelliği istemediğimiz zaman butondan bu class'ı rahat bir şekilde silebiliriz. Ayrıca bu şekilde class'ı başka elementlerde de kullanabiliriz.*/
+.margin-right-sm {
+  margin-right: 1.6rem !important;
+}
+
+.margin-botton-md {
+  margin-bottom: 4.8rem !important;
+}
+
+.center-text {
+  text-align: center;
+}
+
+strong {
+  font-weight: 500;
+}

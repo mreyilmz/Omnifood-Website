@@ -1,0 +1,308 @@
+/* rem and em do NOT depend on html font-size in media queries! Instead, 1rem = 1em = 16px */
+
+/* ************************** */
+/* BELOW  1344px (Smaller desktops*/
+/* ************************** */
+
+/* HD ekranlar 1366px old. için ve kırılma da o civarlarda old.için 1366px/16px yaptık sonu. 84.küsür çıktı biz de yuvarladık. 84*16 ise 1344 yapıyor*/
+@media (max-width: 84em) {
+  .hero {
+    max-width: 120rem;
+  }
+
+  .heading-primary {
+    font-size: 4.4rem;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ************************** */
+/* BELOW  1200px (Landscape Tablets)*/
+/* ************************** */
+/* Ekran küçüldükçe metinler ve görseller ekrana çok büüyk gelmeye başladı. Web sayfamızda nerdeyse her ölçüyü rem cinsinden tanımladığımız için rem de kullanıcının web tarayıcısındaki font-size'a eşit old. için html'deki font-size'a 10px yerine 9px değer verdik. Bu da yüzde olarak 56.25'e tekabül ediyor. Genelde 1200px de bir kırılma noktası kabul edilir bu da 75em'ye eşit. */
+@media (max-width: 75em) {
+  html {
+    /* 9px / 16px */
+    font-size: 56.25%;
+  }
+
+  .grid {
+    column-gap: 4.8rem;
+    row-gap: 6.4rem;
+  }
+
+  .heading-secondary {
+    font-size: 3.6rem;
+  }
+
+  .heading-tertiary {
+    font-size: 2.4rem;
+  }
+
+  .header {
+    padding: 0 3.2rem;
+  }
+
+  .main-nav-list {
+    gap: 3.2rem;
+  }
+
+  .hero {
+    gap: 4.8rem;
+  }
+
+  .testimonials-container {
+    padding: 9.6rem 3.2rem;
+  }
+}
+
+/* ************************** */
+/* BELOW  944px (Tablets)*/
+/* ************************** */
+/* 944'ten küçük genişlikler için hero section'da kırılmalar oldu. */
+@media (max-width: 59em) {
+  html {
+    /* 8px / 16px = 0.5 = 50% */
+    font-size: 50%;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 0 8rem;
+    gap: 6.4rem;
+  }
+
+  .hero-text-box,
+  .hero-img-box {
+    text-align: center;
+  }
+
+  .hero-img {
+    width: 60%;
+  }
+
+  .delivered-meals {
+    justify-content: center;
+    margin-top: 3.2rem;
+  }
+
+  .logos img {
+    height: 2.4rem;
+  }
+
+  .step-number {
+    font-size: 7.4rem;
+  }
+
+  .meal-content {
+    padding: 2.4rem 3.2rem 3.2rem 3.2rem;
+  }
+
+  .section-testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .cta {
+    grid-template-columns: 1.5fr 1fr;
+  }
+
+  .cta-form {
+    grid-template-columns: 1fr;
+  }
+
+  .btn--form {
+    margin-top: 1.2rem;
+  }
+
+  /* MOBILE NAVIGATION */
+  /* Buton mobile nav menüsünün üstünde kaldı. Aslında istediğimiz şey bu fakat normalde olmaması gerekiyor. Icon'u ionicon'dan aldık belki onnunla ilgilidir. */
+  .btn-mobile-nav {
+    display: block;
+    z-index: 9999;
+  }
+
+  .main-nav {
+    background-color: rgba(255, 255, 255, 0.97);
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* Ekranın tamamını kapladı */
+    width: 100%;
+    height: 100vh;
+    transform: translateX(100%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* ease, ease-in, ease-out, ease-in-out gibi seçenekler var */
+    transition: all 0.5s ease;
+
+    /* Hide navigation */
+    /* display: none; olursa transition UYGULAYAMIYORUZ */
+    /* opacity: 0; transition UYGULAYABİLİYORUZ */
+
+    /* 1) Hide it visually */
+    opacity: 0;
+
+    /* 2) Maike it unaccessible to mouse and keyboard */
+    pointer-events: none;
+
+    /* 3) Hide from screen readers */
+    visibility: hidden;
+  }
+
+  /* JS ile nav-open class'ını header'dan kaldırdığımız zaman alttaki selector çalışmayacak. */
+  .nav-open .main-nav {
+    opacity: 1;
+    /* Menü açıldığı zaman pointer-events'i ve visibility'yi eski haline döndmürmemiz gerekiyor. */
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .nav-open .icon-mobile-nav[name="close-outline"] {
+    display: block;
+  }
+
+  .nav-open .icon-mobile-nav[name="menu-outline"] {
+    display: none;
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+    gap: 4.8rem;
+  }
+
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    font-size: 3rem;
+  }
+}
+
+/* ************************** */
+/* BELOW  700px (Smaller Tablets)*/
+/* ************************** */
+@media (max-width: 44em) {
+  .grid--3-cols,
+  .grid--4-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .diets {
+    grid-column: 1/-1;
+    justify-self: center;
+  }
+
+  .heading-secondary {
+    margin-bottom: 4.8rem;
+  }
+
+  .pricing-plan {
+    width: 100%;
+  }
+
+  .grid-footer {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .nav-col {
+    grid-row: 1;
+    grid-column: span 2;
+    margin-bottom: 3.2rem;
+  }
+
+  .logo-col,
+  .address-col {
+    grid-column: span 3;
+  }
+}
+
+/* ************************** */
+/* BELOW  544px (Phones)*/
+/* ************************** */
+@media (max-width: 34em) {
+  .grid {
+    row-gap: 4.8rem;
+  }
+
+  .grid--2-cols,
+  .grid--3-cols,
+  .grid--4-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .section-hero {
+    padding: 2.4rem 0 4.8rem 0;
+  }
+
+  .hero {
+    padding: 0 1.6rem;
+  }
+
+  /* Telefonlarda butonlarin üst ve altındaki gap sağ ve soldan daha fazla olur.*/
+  .btn,
+  .btn:link,
+  .btn:visited {
+    padding: 2.4rem 1.6rem;
+  }
+
+  .hero-img {
+    width: 80%;
+  }
+
+  .logos img {
+    height: 1.2rem;
+  }
+
+  .step-img-box:nth-child(2) {
+    grid-row: 1;
+  }
+
+  .step-img-box:nth-child(6) {
+    grid-row: 5;
+  }
+
+  .step-img-box {
+    transform: translateY(2.4rem);
+  }
+
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+  }
+
+  .cta {
+    grid-template-columns: 1fr;
+  }
+
+  /* Tek sütuna geçince ve .cta-img-box'un için kayboldu. Bu yüzden yükseklik verdik  */
+  .cta-img-box {
+    height: 32rem;
+    grid-row: 1;
+  }
+
+  .cta-text-box {
+    padding: 4.8rem 2.4rem 6.4rem 2.4rem;
+  }
+}
+/* 
+----- 01 TYPOGRPAHY SYSTEM
+
+- font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- SPACING SYSTEM (px)
+2 / 4 / 6 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+*/
